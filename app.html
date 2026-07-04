@@ -210,8 +210,9 @@ svg{display:block;width:100%;}
         <img id="qrImg" alt="UPI QR Code">
         <div class="qrupi" id="qrUpi"></div>
       </div>
+      <div id="upiNote" style="display:none;font-size:11.5px;color:var(--dim);text-align:center;margin:-4px 0 10px;background:rgba(139,92,246,.1);border:1px solid var(--line);border-radius:10px;padding:8px 12px;"></div>
       <div class="row2">
-        <div><label>Amount (&#8377;) — optional</label><input type="number" id="cAmt" min="0" step="0.01" placeholder="Any amount"></div>
+        <div><label>Amount — optional</label><input type="number" id="cAmt" min="0" step="0.01" placeholder="Any amount"></div>
         <div><label>For / Note — optional</label><input type="text" id="cNote" maxlength="40" placeholder="e.g. July fees"></div>
       </div>
       <div class="btnrow" style="margin-top:14px;">
@@ -236,7 +237,7 @@ svg{display:block;width:100%;}
         <button class="exp" data-k="expense">&#8722; Expense</button>
       </div>
       <div class="row2">
-        <div><label>Amount (&#8377;)</label><input type="number" id="lAmt" min="0" step="0.01" placeholder="0.00"></div>
+        <div><label>Amount</label><input type="number" id="lAmt" min="0" step="0.01" placeholder="0.00"></div>
         <div><label>Mode</label><select id="lMode"><option>UPI</option><option>Cash</option><option>Other</option></select></div>
       </div>
       <div class="row2">
@@ -296,8 +297,19 @@ svg{display:block;width:100%;}
     <input type="text" id="sUpi" maxlength="60" placeholder="e.g. name@okaxis" autocapitalize="none">
     <label>Payee name (as per bank) — optional</label>
     <input type="text" id="sPayee" maxlength="40" placeholder="e.g. Ramesh Sharma">
-    <label>Monthly collection target (&#8377;)</label>
-    <input type="number" id="sTarget" min="0" step="500" placeholder="e.g. 50000">
+    <label>Currency</label>
+    <select id="sCur">
+      <option value="USD">$ — US Dollar</option>
+      <option value="INR">&#8377; — Indian Rupee</option>
+      <option value="GBP">&#163; — British Pound</option>
+      <option value="EUR">&#8364; — Euro</option>
+      <option value="AED">AED — UAE Dirham</option>
+      <option value="AUD">A$ — Australian Dollar</option>
+      <option value="CAD">C$ — Canadian Dollar</option>
+      <option value="SGD">S$ — Singapore Dollar</option>
+    </select>
+    <label>Monthly collection target</label>
+    <input type="number" id="sTarget" min="0" step="100" placeholder="e.g. 5000">
     <button class="btn gold" id="btnSave">Save &#10024;</button>
   </div>
 </div>
@@ -331,8 +343,19 @@ svg{display:block;width:100%;}
     <div id="obStep3" style="display:none;">
       <h2>&#127919; One last thing — your monthly target</h2>
       <div class="msub">How much would you love to collect every month? This powers your golden speedometer. You can change it anytime — or skip for now.</div>
-      <label>Monthly collection target (&#8377;)</label>
-      <input type="number" id="obTarget" min="0" step="500" placeholder="e.g. 50000">
+      <label>Currency</label>
+      <select id="obCur">
+        <option value="USD">$ — US Dollar</option>
+        <option value="INR">&#8377; — Indian Rupee</option>
+        <option value="GBP">&#163; — British Pound</option>
+        <option value="EUR">&#8364; — Euro</option>
+        <option value="AED">AED — UAE Dirham</option>
+        <option value="AUD">A$ — Australian Dollar</option>
+        <option value="CAD">C$ — Canadian Dollar</option>
+        <option value="SGD">S$ — Singapore Dollar</option>
+      </select>
+      <label>Monthly collection target</label>
+      <input type="number" id="obTarget" min="0" step="100" placeholder="e.g. 5000">
       <button class="btn gold" id="obDone">Enter my Dashboard &#128081;</button>
       <button class="btn ghost" id="obSkip">Skip — decide later</button>
     </div>
@@ -2665,7 +2688,10 @@ function load(){
 function saveP(){localStorage.setItem(LSP,JSON.stringify(profile));}
 function saveE(){localStorage.setItem(LSE,JSON.stringify(entries));}
 function saveL(){localStorage.setItem(LSL,JSON.stringify(leads));}
-function inr(n){return '₹'+(Number(n)||0).toLocaleString('en-IN',{maximumFractionDigits:2});}
+var CURSYM={USD:'$',INR:'₹',GBP:'£',EUR:'€',AED:'AED ',AUD:'A$',CAD:'C$',SGD:'S$'};
+function curCode(){return (profile&&profile.currency)||'USD';}
+function curSym(){return CURSYM[curCode()]||'$';}
+function inr(n){var loc=curCode()==='INR'?'en-IN':'en-US';return curSym()+(Number(n)||0).toLocaleString(loc,{maximumFractionDigits:2});}
 function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
 function toast(m){var t=$('toast');t.textContent=m;t.style.display='block';clearTimeout(t._h);t._h=setTimeout(function(){t.style.display='none';},2200);}
 function today(){var d=new Date(),m=('0'+(d.getMonth()+1)).slice(-2),dd=('0'+d.getDate()).slice(-2);return d.getFullYear()+'-'+m+'-'+dd;}
@@ -2706,6 +2732,9 @@ function refreshQR(){
   $('qrBiz').textContent=profile.biz; $('pBiz').textContent=profile.biz;
   $('qrUpi').textContent='UPI: '+profile.upi; $('pUpi').textContent='UPI ID: '+profile.upi;
   $('pPayee').textContent=profile.payee?('Payee: '+profile.payee):'';
+  var note=$('upiNote');
+  if(curCode()!=='INR'){note.style.display='block';note.innerHTML='&#8505;&#65039; UPI is India’s payment rail, so a UPI scan charges in <b>rupees (&#8377;)</b>. Your dashboard still shows '+curSym()+'. For '+curCode()+' collection, log payments in the Ledger.';}
+  else{note.style.display='none';}
 }
 
 /* ================= DASHBOARD v2 ================= */
@@ -3001,7 +3030,7 @@ $('btnAdd').onclick=function(){
 
 /* ================= SETTINGS ================= */
 function openSetup(focusUpi){
-  if(profile){$('sBiz').value=profile.biz;$('sUpi').value=profile.upi||'';$('sPayee').value=profile.payee||'';$('sTarget').value=profile.target||'';}
+  if(profile){$('sBiz').value=profile.biz;$('sUpi').value=profile.upi||'';$('sPayee').value=profile.payee||'';$('sTarget').value=profile.target||'';$('sCur').value=profile.currency||'USD';}
   $('setupModal').classList.add('show');
   if(focusUpi){setTimeout(function(){$('sUpi').focus();},150);}
 }
@@ -3012,7 +3041,7 @@ $('btnSave').onclick=function(){
   if(!biz){toast('Please enter your business name');return;}
   if(upi&&upi.indexOf('@')<1){toast('That UPI ID looks wrong — it needs an @');return;}
   var hadUpi=profile&&profile.upi;
-  profile={biz:biz,upi:upi,payee:payee,target:tgt};
+  profile={biz:biz,upi:upi,payee:payee,target:tgt,currency:$('sCur').value};
   saveP(); $('setupModal').classList.remove('show'); refreshQR(); renderDash();
   toast(upi&&!hadUpi?'Your QR is ready — go collect! ✨':'Saved ✓');
 };
@@ -3026,7 +3055,7 @@ $('obNext1').onclick=function(){
 };
 $('obNext2').onclick=function(){obShow(3);};
 function obFinish(tgt){
-  profile={biz:window._obBiz,upi:'',payee:'',target:tgt};
+  profile={biz:window._obBiz,upi:'',payee:'',target:tgt,currency:$('obCur').value};
   saveP(); $('obModal').classList.remove('show');
   refreshQR(); renderDash();
   toast('Welcome, '+profile.biz+' 👑');
