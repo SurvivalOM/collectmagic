@@ -4,35 +4,35 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>Collect Magic — Collect. Track. Grow.</title>
-<meta name="description" content="Collect Magic — your own UPI QR, payment links, cash ledger and profit dashboard. An FPL Warrior tool.">
-<meta name="theme-color" content="#1a1030">
+<meta name="description" content="Collect Magic — your own UPI QR, payment links, cash ledger, live dashboard and business metrics. An FPL Kings & Queens privilege.">
+<meta name="theme-color" content="#120e1e">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%233b1d7a'/%3E%3Ctext x='32' y='42' font-size='30' text-anchor='middle' fill='%23f5c542' font-family='Georgia' font-weight='bold'%3E%E2%82%B9%3C/text%3E%3Ccircle cx='49' cy='15' r='2.5' fill='%23f5c542'/%3E%3Cpath d='M49 8v4M49 18v4M42 15h4M52 15h4' stroke='%23f5c542' stroke-width='1.6' stroke-linecap='round'/%3E%3C/svg%3E">
 <style>
 :root{
-  --bg:#141021; --card:#1e1833; --card2:#251d40; --line:#372c5c;
-  --purple:#8b5cf6; --purple-deep:#6d28d9; --gold:#f5c542; --gold-dim:#c99e2e;
-  --tx:#ece8f8; --tx-dim:#a89fc7; --green:#4ade80; --red:#f87171;
+  --bg:#120e1e; --card:#1d1633; --card2:#261d42; --line:#3a2d63;
+  --purple:#8b5cf6; --purple-deep:#6d28d9; --gold:#f5c542; --gold-soft:#ffe9a8;
+  --tx:#efeafc; --dim:#a89fc7; --green:#4ade80; --red:#f87171; --cash:#60a5fa; --amber:#fbbf24;
 }
 *{box-sizing:border-box;margin:0;padding:0;}
-body{background:var(--bg);color:var(--tx);font-family:system-ui,-apple-system,'Segoe UI',sans-serif;min-height:100vh;padding-bottom:84px;}
-header{display:flex;align-items:center;gap:12px;padding:16px 18px 12px;background:linear-gradient(135deg,#2a1655,#1a1030);border-bottom:1px solid var(--line);}
+body{background:radial-gradient(1200px 600px at 80% -10%, #2a1655 0%, var(--bg) 55%);color:var(--tx);font-family:system-ui,-apple-system,'Segoe UI',sans-serif;min-height:100vh;padding-bottom:84px;}
+header{display:flex;align-items:center;gap:12px;padding:16px 18px 12px;flex-wrap:wrap;}
 .logo{width:44px;height:44px;border-radius:12px;background:#3b1d7a;display:flex;align-items:center;justify-content:center;flex:0 0 auto;box-shadow:0 4px 14px rgba(109,40,217,.45);}
-h1{font-size:20px;background:linear-gradient(90deg,#f5c542,#ffe9a8,#f5c542);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;letter-spacing:.3px;}
-.tag{font-size:11.5px;color:var(--tx-dim);margin-top:1px;letter-spacing:.4px;}
-.gear{margin-left:auto;background:none;border:1px solid var(--line);border-radius:10px;color:var(--tx-dim);font-size:18px;width:40px;height:40px;cursor:pointer;}
-main{max-width:640px;margin:0 auto;padding:16px;}
+h1{font-size:20px;background:linear-gradient(90deg,var(--gold),var(--gold-soft),var(--gold));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;letter-spacing:.3px;}
+.tag{font-size:11px;color:var(--dim);margin-top:1px;letter-spacing:.4px;}
+.crown{display:inline-flex;align-items:center;gap:5px;background:linear-gradient(135deg,#3b2a09,#6b4e0e);border:1px solid #b8860b;color:var(--gold-soft);font-size:10.5px;font-weight:700;padding:4px 10px;border-radius:20px;letter-spacing:.5px;}
+.live{display:inline-flex;align-items:center;gap:6px;background:rgba(74,222,128,.1);border:1px solid rgba(74,222,128,.4);color:var(--green);font-size:11.5px;font-weight:700;padding:5px 11px;border-radius:20px;margin-left:auto;}
+.dot{width:8px;height:8px;border-radius:50%;background:var(--green);animation:pulse 1.6s infinite;}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(74,222,128,.6);}70%{box-shadow:0 0 0 8px rgba(74,222,128,0);}100%{box-shadow:0 0 0 0 rgba(74,222,128,0);}}
+.gear{background:none;border:1px solid var(--line);border-radius:10px;color:var(--dim);font-size:18px;width:40px;height:40px;cursor:pointer;}
+main{max-width:760px;margin:0 auto;padding:8px 16px 16px;}
 .tabbar{position:fixed;bottom:0;left:0;right:0;display:flex;background:#191330;border-top:1px solid var(--line);z-index:40;}
-.tabbar button{flex:1;background:none;border:none;color:var(--tx-dim);font-size:12px;padding:10px 0 12px;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:3px;}
+.tabbar button{flex:1;background:none;border:none;color:var(--dim);font-size:12px;padding:10px 0 12px;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:3px;}
 .tabbar button .ic{font-size:21px;}
 .tabbar button.on{color:var(--gold);}
-.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:16px;margin-bottom:14px;}
-.grid3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;}
-.stat{background:var(--card2);border:1px solid var(--line);border-radius:14px;padding:12px 10px;text-align:center;}
-.stat .lb{font-size:11px;color:var(--tx-dim);letter-spacing:.4px;text-transform:uppercase;}
-.stat .vl{font-size:17px;font-weight:700;margin-top:5px;word-break:break-word;}
-.vl.inc{color:var(--green);} .vl.exp{color:var(--red);} .vl.pro{color:var(--gold);}
-h2{font-size:15px;color:var(--gold);margin-bottom:10px;letter-spacing:.3px;}
-label{display:block;font-size:12.5px;color:var(--tx-dim);margin:10px 0 5px;}
+.card{background:linear-gradient(160deg,var(--card) 0%,var(--card2) 100%);border:1px solid var(--line);border-radius:16px;padding:16px;margin-bottom:14px;box-shadow:0 8px 28px rgba(0,0,0,.3);}
+h2{font-size:12.5px;color:var(--dim);margin-bottom:10px;letter-spacing:1px;text-transform:uppercase;font-weight:600;}
+h2 b{color:var(--gold);}
+label{display:block;font-size:12.5px;color:var(--dim);margin:10px 0 5px;}
 input,select,textarea{width:100%;background:#161128;border:1px solid var(--line);border-radius:10px;color:var(--tx);padding:11px 12px;font-size:15px;outline:none;}
 input:focus,select:focus{border-color:var(--purple);}
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;background:linear-gradient(135deg,var(--purple-deep),var(--purple));color:#fff;border:none;border-radius:12px;padding:12px 16px;font-size:14.5px;font-weight:600;cursor:pointer;width:100%;margin-top:12px;box-shadow:0 4px 14px rgba(109,40,217,.35);}
@@ -40,33 +40,73 @@ input:focus,select:focus{border-color:var(--purple);}
 .btn.ghost{background:none;border:1px solid var(--line);color:var(--tx);box-shadow:none;}
 .btnrow{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
 .btnrow .btn{margin-top:0;}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+.grid3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;}
+@media(max-width:560px){.grid3{grid-template-columns:1fr;}}
+/* gauge + stats */
+.gaugewrap{display:flex;flex-direction:column;align-items:center;}
+.gnum{font-size:30px;font-weight:800;color:var(--gold);margin-top:-64px;}
+.glabel{font-size:12.5px;color:var(--dim);margin-top:2px;text-align:center;}
+.gtarget{font-size:12.5px;color:var(--tx);margin-top:9px;background:rgba(245,197,66,.08);border:1px solid rgba(245,197,66,.35);padding:5px 13px;border-radius:18px;text-align:center;}
+.stat{background:var(--card2);border:1px solid var(--line);border-radius:14px;padding:12px;}
+.stat .lb{font-size:10.5px;color:var(--dim);letter-spacing:.6px;text-transform:uppercase;}
+.stat .vl{font-size:20px;font-weight:800;margin-top:5px;word-break:break-word;}
+.stat .sub{font-size:11.5px;color:var(--dim);margin-top:4px;}
+.vl.inc{color:var(--green);} .vl.exp{color:var(--red);} .vl.pro{color:var(--gold);} .vl.due{color:var(--amber);}
+svg{display:block;width:100%;}
+.legend{display:flex;gap:14px;font-size:11.5px;color:var(--dim);margin-top:8px;flex-wrap:wrap;}
+.sw{display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:5px;}
+.cust{display:flex;align-items:center;gap:11px;padding:8px 0;border-bottom:1px solid var(--line);}
+.cust:last-child{border-bottom:none;}
+.cbadge{width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:13px;color:#2a1655;background:linear-gradient(135deg,var(--gold),#ffdf7e);flex:0 0 auto;}
+.cname{flex:1;font-size:14px;font-weight:600;min-width:0;}
+.camt{font-weight:800;color:var(--green);font-size:14px;white-space:nowrap;}
+.cbar{height:5px;border-radius:3px;background:#372c5c;margin-top:5px;overflow:hidden;}
+.cbar i{display:block;height:100%;background:linear-gradient(90deg,var(--purple),var(--gold));border-radius:3px;}
+/* entries + feed */
+.entry{display:flex;align-items:center;gap:10px;padding:10px 2px;border-bottom:1px solid var(--line);}
+.entry:last-child{border-bottom:none;}
+.edot{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:16px;flex:0 0 auto;background:var(--card2);}
+.emain{flex:1;min-width:0;}
+.ewho{font-size:14px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.emeta{font-size:11.5px;color:var(--dim);margin-top:2px;}
+.eamt{font-size:14.5px;font-weight:700;white-space:nowrap;}
+.eamt.inc{color:var(--green);} .eamt.exp{color:var(--red);}
+.edel{background:none;border:none;color:#6b5f92;font-size:16px;cursor:pointer;padding:6px;}
+.empty{text-align:center;color:var(--dim);padding:22px 10px;font-size:13.5px;line-height:1.6;}
+.seg{display:flex;background:#161128;border:1px solid var(--line);border-radius:12px;overflow:hidden;margin-top:5px;}
+.seg button{flex:1;background:none;border:none;color:var(--dim);padding:11px 0;font-size:14px;cursor:pointer;font-weight:600;}
+.seg button.on.inc{background:rgba(74,222,128,.18);color:var(--green);}
+.seg button.on.exp{background:rgba(248,113,113,.18);color:var(--red);}
+/* QR */
 .qrbox{background:#fff;border-radius:16px;padding:18px;text-align:center;margin:4px auto 12px;max-width:320px;}
 .qrbox img{width:100%;max-width:260px;image-rendering:pixelated;}
 .qrbiz{color:#2a1655;font-weight:800;font-size:17px;margin-bottom:8px;}
 .qrupi{color:#4b3a86;font-size:13px;margin-top:6px;word-break:break-all;font-weight:600;}
-.entry{display:flex;align-items:center;gap:10px;padding:11px 4px;border-bottom:1px solid var(--line);}
-.entry:last-child{border-bottom:none;}
-.edot{width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:17px;flex:0 0 auto;background:var(--card2);}
-.emain{flex:1;min-width:0;}
-.ewho{font-size:14.5px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
-.emeta{font-size:12px;color:var(--tx-dim);margin-top:2px;}
-.eamt{font-size:15px;font-weight:700;white-space:nowrap;}
-.eamt.inc{color:var(--green);} .eamt.exp{color:var(--red);}
-.edel{background:none;border:none;color:#6b5f92;font-size:16px;cursor:pointer;padding:6px;}
-.empty{text-align:center;color:var(--tx-dim);padding:26px 10px;font-size:14px;line-height:1.6;}
-.row2{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
-.seg{display:flex;background:#161128;border:1px solid var(--line);border-radius:12px;overflow:hidden;margin-top:5px;}
-.seg button{flex:1;background:none;border:none;color:var(--tx-dim);padding:11px 0;font-size:14px;cursor:pointer;font-weight:600;}
-.seg button.on.inc{background:rgba(74,222,128,.18);color:var(--green);}
-.seg button.on.exp{background:rgba(248,113,113,.18);color:var(--red);}
+.pill{display:inline-block;background:rgba(245,197,66,.12);border:1px solid rgba(245,197,66,.4);color:var(--gold);font-size:11px;padding:3px 10px;border-radius:20px;letter-spacing:.4px;margin-top:6px;}
+/* metrics page */
+#pg-metrics{display:none;}
+.mgrid{display:grid;grid-template-columns:1fr 1fr;gap:11px;}
+@media(min-width:620px){.mgrid{grid-template-columns:1fr 1fr 1fr;}}
+.mcardx{border-radius:15px;padding:14px;color:#fff;position:relative;overflow:hidden;min-height:86px;box-shadow:0 6px 18px rgba(0,0,0,.3);}
+.mcardx::after{content:"";position:absolute;right:-18px;top:-18px;width:70px;height:70px;border-radius:50%;background:rgba(255,255,255,.13);}
+.mcardx .lb{font-size:10.5px;letter-spacing:.7px;text-transform:uppercase;opacity:.92;font-weight:600;}
+.mcardx .vl{font-size:21px;font-weight:800;margin-top:6px;}
+.mcardx .sub{font-size:10.5px;opacity:.85;margin-top:4px;}
+.msec{font-size:12px;color:var(--gold);letter-spacing:1.2px;text-transform:uppercase;font-weight:700;margin:18px 2px 10px;}
+.g1{background:linear-gradient(135deg,#0ea5e9,#2563eb);} .g2{background:linear-gradient(135deg,#a855f7,#d946ef);}
+.g3{background:linear-gradient(135deg,#7c3aed,#4f46e5);} .g4{background:linear-gradient(135deg,#f43f5e,#fb923c);}
+.g5{background:linear-gradient(135deg,#f59e0b,#f97316);} .g6{background:linear-gradient(135deg,#d946ef,#ec4899);}
+.g7{background:linear-gradient(135deg,#059669,#10b981);} .g8{background:linear-gradient(135deg,#6d28d9,#9333ea);}
+.back{display:inline-flex;align-items:center;gap:8px;background:none;border:1px solid var(--line);color:var(--tx);border-radius:12px;padding:9px 16px;font-size:13.5px;cursor:pointer;margin-bottom:12px;}
+.leadbtn{background:rgba(139,92,246,.15);border:1px dashed var(--purple);color:var(--tx);border-radius:12px;padding:10px 14px;font-size:13px;cursor:pointer;width:100%;margin-top:6px;}
+/* modal + toast + poster */
 .modal{position:fixed;inset:0;background:rgba(10,7,20,.82);display:none;align-items:center;justify-content:center;z-index:60;padding:18px;}
 .modal.show{display:flex;}
 .mcard{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:22px;width:100%;max-width:420px;max-height:92vh;overflow:auto;}
-.mcard h2{font-size:18px;}
-.msub{font-size:13px;color:var(--tx-dim);margin-top:4px;line-height:1.55;}
+.mcard h2{font-size:17px;text-transform:none;letter-spacing:0;color:var(--tx);}
+.msub{font-size:13px;color:var(--dim);margin-top:4px;line-height:1.55;}
 #toast{position:fixed;left:50%;bottom:96px;transform:translateX(-50%);background:#2a1655;border:1px solid var(--purple);color:#fff;padding:11px 20px;border-radius:12px;font-size:14px;z-index:80;display:none;box-shadow:0 6px 20px rgba(0,0,0,.5);white-space:nowrap;}
-.pill{display:inline-block;background:rgba(245,197,66,.12);border:1px solid rgba(245,197,66,.4);color:var(--gold);font-size:11px;padding:3px 10px;border-radius:20px;letter-spacing:.4px;margin-top:6px;}
-.tabpage{display:none;} .tabpage.on{display:block;}
 #poster{display:none;}
 @media print{
   body *{visibility:hidden;}
@@ -89,39 +129,72 @@ input:focus,select:focus{border-color:var(--purple);}
   </div>
   <div>
     <h1>Collect Magic</h1>
-    <div class="tag">Collect. Track. Grow. &nbsp;&#8226;&nbsp; an FPL Warrior tool</div>
+    <div class="tag">Collect. Track. Grow.</div>
   </div>
+  <span class="crown">&#128081; KINGS &amp; QUEENS</span>
+  <span class="live"><span class="dot"></span>LIVE</span>
   <button class="gear" id="btnGear" title="Settings">&#9881;</button>
 </header>
 
 <main>
   <!-- DASHBOARD -->
-  <section class="tabpage on" id="pg-dash">
+  <section class="tabpage" id="pg-dash">
+    <div class="card gaugewrap">
+      <h2>Monthly Target &#8226; <b id="gMonth">This Month</b></h2>
+      <svg viewBox="0 0 220 130" style="max-width:240px;">
+        <defs><linearGradient id="arcg" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="#8b5cf6"/><stop offset="100%" stop-color="#f5c542"/></linearGradient></defs>
+        <path d="M 20 115 A 90 90 0 0 1 200 115" fill="none" stroke="#372c5c" stroke-width="16" stroke-linecap="round"/>
+        <path id="gArc" d="M 20 115 A 90 90 0 0 1 200 115" fill="none" stroke="url(#arcg)" stroke-width="16" stroke-linecap="round" stroke-dasharray="283" stroke-dashoffset="283"/>
+        <g id="gNeedle" transform="rotate(-90 110 115)">
+          <line x1="110" y1="115" x2="110" y2="38" stroke="#f5c542" stroke-width="4" stroke-linecap="round"/>
+          <circle cx="110" cy="115" r="8" fill="#f5c542"/>
+        </g>
+      </svg>
+      <div class="gnum" id="gPct">0%</div>
+      <div class="glabel" id="gLbl">Set your monthly target in &#9881; Settings</div>
+      <div class="gtarget" id="gGo">&#10024; Let the collections begin</div>
+    </div>
+
     <div class="card">
-      <h2>This Month</h2>
       <div class="grid3">
-        <div class="stat"><div class="lb">Income</div><div class="vl inc" id="mInc">&#8377;0</div></div>
-        <div class="stat"><div class="lb">Expense</div><div class="vl exp" id="mExp">&#8377;0</div></div>
-        <div class="stat"><div class="lb">Profit</div><div class="vl pro" id="mPro">&#8377;0</div></div>
+        <div class="stat"><div class="lb">Collected &#8226; Month</div><div class="vl inc" id="dInc">&#8377;0</div><div class="sub" id="dIncSub">—</div></div>
+        <div class="stat"><div class="lb">Expenses &#8226; Month</div><div class="vl exp" id="dExp">&#8377;0</div><div class="sub" id="dExpSub">—</div></div>
+        <div class="stat"><div class="lb">Profit &#8226; Month</div><div class="vl pro" id="dPro">&#8377;0</div><div class="sub">Honest math, always</div></div>
+      </div>
+      <button class="btn gold" id="btnMetrics" style="margin-top:14px;">&#128202; Business Metrics &#8594;</button>
+    </div>
+
+    <div class="card">
+      <h2>Daily Collections &#8226; Last 14 Days</h2>
+      <div id="lineWrap"><div class="empty">Record your first payment to see the graph &#10024;</div></div>
+    </div>
+
+    <div class="card">
+      <h2>Income vs Expense &#8226; 6 Months</h2>
+      <div id="barWrap"><div class="empty">Data appears as months fill up</div></div>
+      <div class="legend"><span><i class="sw" style="background:#4ade80"></i>Income</span><span><i class="sw" style="background:#f87171"></i>Expense</span></div>
+    </div>
+
+    <div class="row2">
+      <div class="card" style="margin-bottom:14px;">
+        <h2>Payment Mix</h2>
+        <div id="donutWrap"><div class="empty">—</div></div>
+      </div>
+      <div class="card" style="margin-bottom:14px;">
+        <h2>Top Customers</h2>
+        <div id="topWrap"><div class="empty">—</div></div>
       </div>
     </div>
+
     <div class="card">
-      <h2>All Time</h2>
-      <div class="grid3">
-        <div class="stat"><div class="lb">Income</div><div class="vl inc" id="aInc">&#8377;0</div></div>
-        <div class="stat"><div class="lb">Expense</div><div class="vl exp" id="aExp">&#8377;0</div></div>
-        <div class="stat"><div class="lb">Profit</div><div class="vl pro" id="aPro">&#8377;0</div></div>
-      </div>
-    </div>
-    <div class="card">
-      <h2>Recent Entries</h2>
-      <div id="recentList"><div class="empty">No entries yet.<br>Go to <b>Collect</b> to receive your first payment &#10024;</div></div>
+      <h2>Live Activity <span style="color:var(--green);">&#9679;</span></h2>
+      <div id="feedWrap"><div class="empty">Your activity will appear here</div></div>
       <button class="btn ghost" id="btnCsv1">&#11015; Export to Excel (CSV)</button>
     </div>
   </section>
 
   <!-- COLLECT -->
-  <section class="tabpage" id="pg-collect">
+  <section class="tabpage" id="pg-collect" style="display:none;">
     <div class="card">
       <h2>Your Payment QR</h2>
       <div class="qrbox">
@@ -146,7 +219,7 @@ input:focus,select:focus{border-color:var(--purple);}
   </section>
 
   <!-- LEDGER -->
-  <section class="tabpage" id="pg-ledger">
+  <section class="tabpage" id="pg-ledger" style="display:none;">
     <div class="card">
       <h2>Add Entry</h2>
       <div class="seg" id="segKind">
@@ -161,6 +234,9 @@ input:focus,select:focus{border-color:var(--purple);}
         <div><label>Customer / Item</label><input type="text" id="lWho" maxlength="40" placeholder="Name or item"></div>
         <div><label>Date</label><input type="date" id="lDate"></div>
       </div>
+      <div id="catRow" style="display:none;"><label>Expense Category</label>
+        <select id="lCat"><option>General</option><option>Ad Spend</option><option>Overheads</option></select>
+      </div>
       <label>Note — optional</label><input type="text" id="lNote" maxlength="60" placeholder="Anything to remember">
       <button class="btn" id="btnAdd">&#10024; Save Entry</button>
     </div>
@@ -169,6 +245,28 @@ input:focus,select:focus{border-color:var(--purple);}
       <div id="fullList"><div class="empty">Nothing here yet.</div></div>
       <button class="btn ghost" id="btnCsv2">&#11015; Export to Excel (CSV)</button>
     </div>
+  </section>
+
+  <!-- METRICS (separate page) -->
+  <section id="pg-metrics">
+    <button class="back" id="btnBack">&#8592; Back to Dashboard</button>
+    <div class="card" style="padding:14px 16px;">
+      <h2 style="margin-bottom:4px;">&#128202; Business Metrics &#8226; <b id="mMonth">This Month</b></h2>
+      <div style="font-size:12px;color:var(--dim);">Every number a business runs on — computed live from your ledger. Cards showing &#8212; need more data, never fake math.</div>
+    </div>
+
+    <div class="msec">&#128176; Money</div>
+    <div class="mgrid" id="mgMoney"></div>
+
+    <div class="msec">&#129309; Customers</div>
+    <div class="mgrid" id="mgCust"></div>
+
+    <div class="msec">&#127919; Marketing Funnel</div>
+    <div class="mgrid" id="mgFunnel"></div>
+    <button class="leadbtn" id="btnLead">&#10133; Add Lead (someone enquired today) — feeds CPL &amp; conversion metrics</button>
+
+    <div class="msec">&#128200; Business Health</div>
+    <div class="mgrid" id="mgHealth"></div>
   </section>
 </main>
 
@@ -189,6 +287,8 @@ input:focus,select:focus{border-color:var(--purple);}
     <input type="text" id="sUpi" maxlength="60" placeholder="e.g. name@okaxis" autocapitalize="none">
     <label>Payee name (as per bank) — optional</label>
     <input type="text" id="sPayee" maxlength="40" placeholder="e.g. Ramesh Sharma">
+    <label>Monthly collection target (&#8377;)</label>
+    <input type="number" id="sTarget" min="0" step="500" placeholder="e.g. 50000">
     <button class="btn gold" id="btnSave">Start Collecting &#10024;</button>
   </div>
 </div>
@@ -2507,19 +2607,38 @@ var qrcode = function() {
 <script>
 (function(){
 'use strict';
-var LSP='cm_profile', LSE='cm_entries';
-var profile=null, entries=[], kind='income';
+var LSP='cm_profile', LSE='cm_entries', LSL='cm_leads';
+var profile=null, entries=[], leads={}, kind='income';
 
 function $(id){return document.getElementById(id);}
-function load(){ try{profile=JSON.parse(localStorage.getItem(LSP)||'null');}catch(e){profile=null;}
-  try{entries=JSON.parse(localStorage.getItem(LSE)||'[]');}catch(e){entries=[];} }
+function load(){
+  try{profile=JSON.parse(localStorage.getItem(LSP)||'null');}catch(e){profile=null;}
+  try{entries=JSON.parse(localStorage.getItem(LSE)||'[]');}catch(e){entries=[];}
+  try{leads=JSON.parse(localStorage.getItem(LSL)||'{}');}catch(e){leads={};}
+}
 function saveP(){localStorage.setItem(LSP,JSON.stringify(profile));}
 function saveE(){localStorage.setItem(LSE,JSON.stringify(entries));}
+function saveL(){localStorage.setItem(LSL,JSON.stringify(leads));}
 function inr(n){return '₹'+(Number(n)||0).toLocaleString('en-IN',{maximumFractionDigits:2});}
+function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
 function toast(m){var t=$('toast');t.textContent=m;t.style.display='block';clearTimeout(t._h);t._h=setTimeout(function(){t.style.display='none';},2200);}
 function today(){var d=new Date(),m=('0'+(d.getMonth()+1)).slice(-2),dd=('0'+d.getDate()).slice(-2);return d.getFullYear()+'-'+m+'-'+dd;}
+function ym(d){return (d||today()).slice(0,7);}
+var MONTHS=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+function monthName(y){var p=y.split('-');return MONTHS[parseInt(p[1],10)-1]+' '+p[0].slice(2);}
 
-/* ---------- UPI + QR ---------- */
+/* ================= DATA HELPERS ================= */
+function sum(list){return list.reduce(function(a,e){return a+(Number(e.amount)||0);},0);}
+function inMonth(e,m){return (e.date||'').slice(0,7)===m;}
+function incomes(){return entries.filter(function(e){return e.kind==='income';});}
+function expenses(){return entries.filter(function(e){return e.kind==='expense';});}
+function custMap(list){
+  var m={};
+  list.forEach(function(e){var w=(e.who||'').trim();if(!w)return;var k=w.toLowerCase();if(!m[k])m[k]={name:w,total:0,count:0,first:e.date};m[k].total+=Number(e.amount)||0;m[k].count++;if(e.date<m[k].first)m[k].first=e.date;});
+  return m;
+}
+
+/* ================= UPI + QR ================= */
 function upiLink(amt,note){
   var u='upi://pay?pa='+encodeURIComponent(profile.upi)+'&pn='+encodeURIComponent(profile.payee||profile.biz)+'&cu=INR';
   if(amt&&amt>0)u+='&am='+amt.toFixed(2);
@@ -2530,42 +2649,225 @@ function makeQR(text){var qr=qrcode(0,'M');qr.addData(text);qr.make();return qr.
 function refreshQR(){
   if(!profile)return;
   var amt=parseFloat($('cAmt').value)||0, note=$('cNote').value.trim();
-  var link=upiLink(amt,note), data=makeQR(link);
+  var data=makeQR(upiLink(amt,note));
   $('qrImg').src=data; $('pQr').src=data;
   $('qrBiz').textContent=profile.biz; $('pBiz').textContent=profile.biz;
   $('qrUpi').textContent='UPI: '+profile.upi; $('pUpi').textContent='UPI ID: '+profile.upi;
   $('pPayee').textContent=profile.payee?('Payee: '+profile.payee):'';
 }
 
-/* ---------- Stats + lists ---------- */
-function stats(){
-  var now=new Date(), ym=now.getFullYear()+'-'+('0'+(now.getMonth()+1)).slice(-2);
-  var mI=0,mE=0,aI=0,aE=0;
-  entries.forEach(function(e){
-    var a=Number(e.amount)||0;
-    if(e.kind==='income'){aI+=a;if((e.date||'').slice(0,7)===ym)mI+=a;}
-    else{aE+=a;if((e.date||'').slice(0,7)===ym)mE+=a;}
-  });
-  $('mInc').textContent=inr(mI);$('mExp').textContent=inr(mE);$('mPro').textContent=inr(mI-mE);
-  $('aInc').textContent=inr(aI);$('aExp').textContent=inr(aE);$('aPro').textContent=inr(aI-aE);
+/* ================= DASHBOARD v2 ================= */
+function renderGauge(){
+  var m=ym(), tgt=(profile&&Number(profile.target))||0;
+  var got=sum(incomes().filter(function(e){return inMonth(e,m);}));
+  var now=new Date(), daysLeft=new Date(now.getFullYear(),now.getMonth()+1,0).getDate()-now.getDate();
+  $('gMonth').textContent=MONTHS[now.getMonth()]+' '+now.getFullYear();
+  if(tgt>0){
+    var pct=Math.min(1,got/tgt);
+    $('gPct').textContent=Math.round(pct*100)+'%';
+    $('gArc').setAttribute('stroke-dashoffset',String(283*(1-pct)));
+    $('gNeedle').setAttribute('transform','rotate('+((pct-0.5)*180)+' 110 115)');
+    $('gLbl').textContent=inr(got)+' collected of '+inr(tgt)+' target';
+    $('gGo').innerHTML=got>=tgt?'&#127942; Target achieved! You are unstoppable':'&#10024; '+inr(tgt-got)+' to go — '+daysLeft+' days left';
+  }else{
+    $('gPct').textContent=inr(got).replace('₹','₹');
+    $('gArc').setAttribute('stroke-dashoffset','283');
+    $('gNeedle').setAttribute('transform','rotate(-90 110 115)');
+    $('gLbl').textContent='Collected this month — set a target in ⚙ Settings to activate the meter';
+    $('gGo').innerHTML='&#10024; Targets turn collecting into a game';
+  }
 }
-function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+function renderStats(){
+  var m=ym();
+  var mi=incomes().filter(function(e){return inMonth(e,m);});
+  var me=expenses().filter(function(e){return inMonth(e,m);});
+  var prev=new Date(); prev.setMonth(prev.getMonth()-1);
+  var pm=prev.getFullYear()+'-'+('0'+(prev.getMonth()+1)).slice(-2);
+  var pi=sum(incomes().filter(function(e){return inMonth(e,pm);}));
+  var gi=sum(mi), ge=sum(me);
+  $('dInc').textContent=inr(gi);
+  var upi=mi.filter(function(e){return e.mode==='UPI';}).length, cash=mi.length-upi;
+  $('dIncSub').textContent=mi.length+' payments • UPI '+upi+', Cash/Other '+cash+(pi>0?(' • '+(gi>=pi?'▲':'▼')+' '+Math.abs(Math.round((gi-pi)/pi*100))+'% vs last month'):'');
+  $('dExp').textContent=inr(ge);
+  $('dExpSub').textContent=me.length?me.length+' entries':'—';
+  $('dPro').textContent=inr(gi-ge);
+}
+function renderLine(){
+  var days=[], sums=[], max=0;
+  for(var i=13;i>=0;i--){
+    var d=new Date(); d.setDate(d.getDate()-i);
+    var key=d.getFullYear()+'-'+('0'+(d.getMonth()+1)).slice(-2)+'-'+('0'+d.getDate()).slice(-2);
+    var s=sum(incomes().filter(function(e){return e.date===key;}));
+    days.push(key); sums.push(s); if(s>max)max=s;
+  }
+  if(max===0){$('lineWrap').innerHTML='<div class="empty">Record your first payment to see the graph ✨</div>';return;}
+  var pts=[], W=640, H=150;
+  for(var j=0;j<14;j++){pts.push(Math.round(j*(W/13))+','+Math.round(H-15-(sums[j]/max)*(H-35)));}
+  var line=pts.join(' ');
+  var html='<svg viewBox="0 0 '+W+' '+H+'">'
+    +'<defs><linearGradient id="areag" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#f5c542" stop-opacity=".35"/><stop offset="100%" stop-color="#f5c542" stop-opacity="0"/></linearGradient></defs>'
+    +'<polygon points="0,'+(H-15)+' '+line+' '+W+','+(H-15)+'" fill="url(#areag)"/>'
+    +'<polyline points="'+line+'" fill="none" stroke="#f5c542" stroke-width="3" stroke-linejoin="round"/>'
+    +'<circle cx="'+pts[13].split(',')[0]+'" cy="'+pts[13].split(',')[1]+'" r="5" fill="#4ade80"/>'
+    +'<line x1="0" y1="'+(H-1)+'" x2="'+W+'" y2="'+(H-1)+'" stroke="#3a2d63"/></svg>';
+  $('lineWrap').innerHTML=html;
+}
+function renderBars(){
+  var months=[], inc=[], exp=[], max=0;
+  for(var i=5;i>=0;i--){
+    var d=new Date(); d.setMonth(d.getMonth()-i);
+    var key=d.getFullYear()+'-'+('0'+(d.getMonth()+1)).slice(-2);
+    months.push(key);
+    var gi=sum(incomes().filter(function(e){return inMonth(e,key);}));
+    var ge=sum(expenses().filter(function(e){return inMonth(e,key);}));
+    inc.push(gi); exp.push(ge); max=Math.max(max,gi,ge);
+  }
+  if(max===0){$('barWrap').innerHTML='<div class="empty">Data appears as months fill up</div>';return;}
+  var W=560,H=190,html='<svg viewBox="0 0 '+W+' '+H+'">';
+  for(var j=0;j<6;j++){
+    var x=20+j*90;
+    var hi=Math.round((inc[j]/max)*140), he=Math.round((exp[j]/max)*140);
+    html+='<rect x="'+x+'" y="'+(170-hi)+'" width="28" height="'+hi+'" rx="5" fill="#4ade80"/>';
+    html+='<rect x="'+(x+33)+'" y="'+(170-he)+'" width="28" height="'+he+'" rx="5" fill="#f87171"/>';
+    html+='<text x="'+(x+30)+'" y="186" font-size="11" fill="#a89fc7" text-anchor="middle">'+monthName(months[j])+'</text>';
+  }
+  html+='<line x1="10" y1="171" x2="550" y2="171" stroke="#3a2d63"/></svg>';
+  $('barWrap').innerHTML=html;
+}
+function renderDonut(){
+  var mi=incomes(), tot=sum(mi);
+  if(tot===0){$('donutWrap').innerHTML='<div class="empty">—</div>';return;}
+  var u=sum(mi.filter(function(e){return e.mode==='UPI';}));
+  var c=sum(mi.filter(function(e){return e.mode==='Cash';}));
+  var o=tot-u-c;
+  var C=327, du=C*u/tot, dc=C*c/tot, dd=C*o/tot;
+  var html='<svg viewBox="0 0 140 140" style="max-width:150px;margin:0 auto;">'
+    +'<circle cx="70" cy="70" r="52" fill="none" stroke="#372c5c" stroke-width="20"/>'
+    +'<circle cx="70" cy="70" r="52" fill="none" stroke="#8b5cf6" stroke-width="20" stroke-dasharray="'+du+' '+C+'" transform="rotate(-90 70 70)"/>'
+    +'<circle cx="70" cy="70" r="52" fill="none" stroke="#60a5fa" stroke-width="20" stroke-dasharray="'+dc+' '+C+'" stroke-dashoffset="'+(-du)+'" transform="rotate(-90 70 70)"/>'
+    +'<circle cx="70" cy="70" r="52" fill="none" stroke="#f5c542" stroke-width="20" stroke-dasharray="'+dd+' '+C+'" stroke-dashoffset="'+(-(du+dc))+'" transform="rotate(-90 70 70)"/>'
+    +'<text x="70" y="66" text-anchor="middle" font-size="18" font-weight="800" fill="#efeafc">'+Math.round(u/tot*100)+'%</text>'
+    +'<text x="70" y="84" text-anchor="middle" font-size="10" fill="#a89fc7">UPI</text></svg>'
+    +'<div class="legend" style="justify-content:center;"><span><i class="sw" style="background:#8b5cf6"></i>UPI '+Math.round(u/tot*100)+'%</span><span><i class="sw" style="background:#60a5fa"></i>Cash '+Math.round(c/tot*100)+'%</span><span><i class="sw" style="background:#f5c542"></i>Other '+Math.round(o/tot*100)+'%</span></div>';
+  $('donutWrap').innerHTML=html;
+}
+function renderTop(){
+  var m=custMap(incomes());
+  var list=Object.keys(m).map(function(k){return m[k];}).sort(function(a,b){return b.total-a.total;}).slice(0,4);
+  if(!list.length){$('topWrap').innerHTML='<div class="empty">—</div>';return;}
+  var max=list[0].total, html='';
+  list.forEach(function(c,i){
+    html+='<div class="cust"><div class="cbadge">'+(i+1)+'</div><div style="flex:1;min-width:0;"><div class="cname">'+esc(c.name)+'</div><div class="cbar"><i style="width:'+Math.round(c.total/max*100)+'%"></i></div></div><div class="camt">'+inr(c.total)+'</div></div>';
+  });
+  $('topWrap').innerHTML=html;
+}
+function renderFeed(){
+  var sorted=entries.slice().sort(function(a,b){return (b.date||'').localeCompare(a.date||'')||b.id-a.id;}).slice(0,6);
+  if(!sorted.length){$('feedWrap').innerHTML='<div class="empty">Your activity will appear here</div>';return;}
+  var html='';
+  sorted.forEach(function(e,i){
+    var ic=e.kind==='income'?(e.mode==='Cash'?'💵':'📲'):'🛒';
+    var who=e.who||(e.kind==='income'?'Payment received':'Expense');
+    var meta=(e.date||'')+' • '+(e.mode||'')+(e.cat&&e.cat!=='General'?' • '+e.cat:'')+(e.note?(' • '+e.note):'');
+    html+='<div class="entry"><div class="edot">'+ic+'</div>'
+      +'<div class="emain"><div class="ewho">'+esc(who)+'</div><div class="emeta">'+esc(meta)+'</div></div>'
+      +'<div class="eamt '+(e.kind==='income'?'inc':'exp')+'">'+(e.kind==='income'?'+':'−')+inr(e.amount)+'</div></div>';
+  });
+  $('feedWrap').innerHTML=html;
+}
+function renderDash(){renderGauge();renderStats();renderLine();renderBars();renderDonut();renderTop();renderFeed();}
+
+/* ================= METRICS PAGE ================= */
+function mcardHTML(cls,label,value,sub){
+  return '<div class="mcardx '+cls+'"><div class="lb">'+label+'</div><div class="vl">'+value+'</div>'+(sub?'<div class="sub">'+sub+'</div>':'')+'</div>';
+}
+function renderMetrics(){
+  var m=ym();
+  var now=new Date();
+  $('mMonth').textContent=MONTHS[now.getMonth()]+' '+now.getFullYear();
+  var miAll=incomes(), meAll=expenses();
+  var mi=miAll.filter(function(e){return inMonth(e,m);});
+  var me=meAll.filter(function(e){return inMonth(e,m);});
+  var rev=sum(mi), revAll=sum(miAll);
+  var online=sum(mi.filter(function(e){return e.mode==='UPI';}));
+  var offline=rev-online;
+  var exp=sum(me);
+  var ads=sum(me.filter(function(e){return e.cat==='Ad Spend';}));
+  var ovh=sum(me.filter(function(e){return e.cat==='Overheads';}));
+  var profit=rev-exp;
+  var profitPct=rev>0?Math.round(profit/rev*100)+'%':'—';
+
+  /* customers */
+  var cAll=custMap(miAll), keysAll=Object.keys(cAll);
+  var totalCust=keysAll.length;
+  var newCust=keysAll.filter(function(k){return (cAll[k].first||'').slice(0,7)===m;}).length;
+  var repeat=keysAll.filter(function(k){return cAll[k].count>1;}).length;
+  var repeatPct=totalCust>0?Math.round(repeat/totalCust*100)+'%':'—';
+  var aov=miAll.length>0?inr(revAll/miAll.length):'—';
+  var arpc=totalCust>0?inr(revAll/totalCust):'—';
+  var clv=totalCust>0?inr(revAll/totalCust):'—';
+
+  /* funnel */
+  var lm=leads[m]||0;
+  var convPct=lm>0?Math.round(newCust/lm*100)+'%':'—';
+  var cpl=(ads>0&&lm>0)?inr(ads/lm):'—';
+  var cac=(ads>0&&newCust>0)?inr(ads/newCust):'—';
+  var roas=ads>0?((rev/ads).toFixed(1)+'×'):'—';
+
+  $('mgMoney').innerHTML=
+    mcardHTML('g1','Total Revenue',inr(rev),'this month • all-time '+inr(revAll))
+   +mcardHTML('g2','Online Collection',inr(online),'UPI payments')
+   +mcardHTML('g3','Offline Collection',inr(offline),'cash + other')
+   +mcardHTML('g4','Total Expenses',inr(exp),me.length+' entries')
+   +mcardHTML('g5','Ad Spend',inr(ads),'tag expenses as “Ad Spend”')
+   +mcardHTML('g5','Overheads',inr(ovh),'tag expenses as “Overheads”')
+   +mcardHTML('g7','Net Profit',inr(profit),'revenue minus expenses')
+   +mcardHTML('g8','Profitability %',profitPct,'net margin');
+
+  $('mgCust').innerHTML=
+    mcardHTML('g3','Total Customers',totalCust||'—','all-time, by name')
+   +mcardHTML('g7','New Customers',newCust||'—','first payment this month')
+   +mcardHTML('g6','Repeat Rate',repeatPct,'customers who paid again')
+   +mcardHTML('g1','Avg Payment (AOV)',aov,'average order value')
+   +mcardHTML('g2','Revenue / Customer (ARPC)',arpc,'average revenue per customer')
+   +mcardHTML('g8','Lifetime Value (CLV)',clv,'grows as customers stay');
+
+  $('mgFunnel').innerHTML=
+    mcardHTML('g4','Leads Generated',lm||'—','enquiries this month')
+   +mcardHTML('g7','Converted to Customers',newCust||'—','new paying customers')
+   +mcardHTML('g6','Conversion Rate',convPct,'leads → customers')
+   +mcardHTML('g5','Cost Per Lead (CPL)',cpl,'ad spend ÷ leads')
+   +mcardHTML('g4','Acquisition Cost (CAC)',cac,'ad spend ÷ new customers')
+   +mcardHTML('g8','Return on Ad Spend (ROAS)',roas,'revenue ÷ ad spend');
+
+  var best='—', bm=0;
+  for(var i=0;i<6;i++){
+    var d=new Date(); d.setMonth(d.getMonth()-i);
+    var key=d.getFullYear()+'-'+('0'+(d.getMonth()+1)).slice(-2);
+    var s=sum(miAll.filter(function(e){return inMonth(e,key);}));
+    if(s>bm){bm=s;best=monthName(key);}
+  }
+  $('mgHealth').innerHTML=
+    mcardHTML('g1','Receivables Due','—','arrives with Subscriptions (Phase 2)')
+   +mcardHTML('g2','Recurring Revenue (MRR)','—','arrives with Subscriptions (Phase 2)')
+   +mcardHTML('g7','Best Month',best,bm>0?inr(bm):'keep collecting')
+   +mcardHTML('g8','Expense Ratio',rev>0?Math.round(exp/rev*100)+'%':'—','expenses ÷ revenue');
+}
+
+/* ================= LISTS + CSV ================= */
 function rowHTML(e){
   var ic=e.kind==='income'?(e.mode==='Cash'?'💵':'📲'):'🛒';
-  var sign=e.kind==='income'?'+':'−';
   var who=e.who||(e.kind==='income'?'Payment received':'Expense');
-  var meta=(e.date||'')+' • '+(e.mode||'')+(e.note?(' • '+e.note):'');
+  var meta=(e.date||'')+' • '+(e.mode||'')+(e.cat&&e.cat!=='General'?' • '+e.cat:'')+(e.note?(' • '+e.note):'');
   return '<div class="entry"><div class="edot">'+ic+'</div>'
     +'<div class="emain"><div class="ewho">'+esc(who)+'</div><div class="emeta">'+esc(meta)+'</div></div>'
-    +'<div class="eamt '+(e.kind==='income'?'inc':'exp')+'">'+sign+inr(e.amount)+'</div>'
+    +'<div class="eamt '+(e.kind==='income'?'inc':'exp')+'">'+(e.kind==='income'?'+':'−')+inr(e.amount)+'</div>'
     +'<button class="edel" data-id="'+e.id+'" title="Delete">🗑</button></div>';
 }
 function renderLists(){
   var sorted=entries.slice().sort(function(a,b){return (b.date||'').localeCompare(a.date||'')||b.id-a.id;});
-  var rec=sorted.slice(0,8);
-  $('recentList').innerHTML=rec.length?rec.map(rowHTML).join(''):'<div class="empty">No entries yet.<br>Go to <b>Collect</b> to receive your first payment ✨</div>';
   $('fullList').innerHTML=sorted.length?sorted.map(rowHTML).join(''):'<div class="empty">Nothing here yet.</div>';
-  stats();
+  renderDash();
 }
 document.addEventListener('click',function(ev){
   var d=ev.target.closest('.edel'); if(!d)return;
@@ -2574,13 +2876,11 @@ document.addEventListener('click',function(ev){
   entries=entries.filter(function(e){return e.id!==id;});
   saveE(); renderLists(); toast('Entry deleted');
 });
-
-/* ---------- CSV ---------- */
 function csv(){
   if(!entries.length){toast('Nothing to export yet');return;}
-  var rows=[['Date','Type','Mode','Amount','Customer/Item','Note']];
+  var rows=[['Date','Type','Mode','Category','Amount','Customer/Item','Note']];
   entries.slice().sort(function(a,b){return (a.date||'').localeCompare(b.date||'');}).forEach(function(e){
-    rows.push([e.date,e.kind,e.mode,e.amount,e.who||'',e.note||'']);
+    rows.push([e.date,e.kind,e.mode,e.cat||'',e.amount,e.who||'',e.note||'']);
   });
   var txt=rows.map(function(r){return r.map(function(c){return '"'+String(c).replace(/"/g,'""')+'"';}).join(',');}).join('\r\n');
   var b=new Blob(['﻿'+txt],{type:'text/csv'}),a=document.createElement('a');
@@ -2589,16 +2889,25 @@ function csv(){
 }
 $('btnCsv1').onclick=csv; $('btnCsv2').onclick=csv;
 
-/* ---------- Tabs ---------- */
+/* ================= NAV ================= */
+function showPage(pg){
+  ['dash','collect','ledger'].forEach(function(p){$('pg-'+p).style.display=(p===pg)?'block':'none';});
+  $('pg-metrics').style.display='none';
+  document.querySelectorAll('.tabbar button').forEach(function(b){b.classList.toggle('on',b.getAttribute('data-pg')===pg);});
+}
 document.querySelectorAll('.tabbar button').forEach(function(b){
-  b.onclick=function(){
-    document.querySelectorAll('.tabbar button').forEach(function(x){x.classList.remove('on');});
-    document.querySelectorAll('.tabpage').forEach(function(x){x.classList.remove('on');});
-    b.classList.add('on'); $('pg-'+b.getAttribute('data-pg')).classList.add('on');
-  };
+  b.onclick=function(){showPage(b.getAttribute('data-pg'));};
 });
+$('btnMetrics').onclick=function(){
+  ['dash','collect','ledger'].forEach(function(p){$('pg-'+p).style.display='none';});
+  renderMetrics(); $('pg-metrics').style.display='block'; window.scrollTo(0,0);
+};
+$('btnBack').onclick=function(){showPage('dash');};
+$('btnLead').onclick=function(){
+  var m=ym(); leads[m]=(leads[m]||0)+1; saveL(); renderMetrics(); toast('Lead added — '+leads[m]+' this month');
+};
 
-/* ---------- Collect actions ---------- */
+/* ================= COLLECT ================= */
 $('cAmt').oninput=refreshQR; $('cNote').oninput=refreshQR;
 $('btnCopy').onclick=function(){
   var amt=parseFloat($('cAmt').value)||0, link=upiLink(amt,$('cNote').value.trim());
@@ -2615,45 +2924,47 @@ $('btnPoster').onclick=function(){window.print();};
 $('btnGot').onclick=function(){
   var amt=parseFloat($('cAmt').value)||0;
   if(!amt||amt<=0){toast('Enter the amount first');$('cAmt').focus();return;}
-  entries.push({id:Date.now(),date:today(),kind:'income',mode:'UPI',amount:amt,who:$('cNote').value.trim()||'Payment received',note:''});
+  entries.push({id:Date.now(),date:today(),kind:'income',mode:'UPI',amount:amt,who:$('cNote').value.trim()||'Payment received',note:'',cat:''});
   saveE(); renderLists(); $('cAmt').value=''; $('cNote').value=''; refreshQR();
   toast('₹'+amt+' income recorded ✓');
 };
 
-/* ---------- Ledger form ---------- */
+/* ================= LEDGER ================= */
 document.querySelectorAll('#segKind button').forEach(function(b){
   b.onclick=function(){
     kind=b.getAttribute('data-k');
     document.querySelectorAll('#segKind button').forEach(function(x){x.classList.remove('on');});
     b.classList.add('on');
+    $('catRow').style.display=(kind==='expense')?'block':'none';
   };
 });
 $('btnAdd').onclick=function(){
   var amt=parseFloat($('lAmt').value)||0;
   if(!amt||amt<=0){toast('Enter a valid amount');$('lAmt').focus();return;}
-  entries.push({id:Date.now(),date:$('lDate').value||today(),kind:kind,mode:$('lMode').value,amount:amt,who:$('lWho').value.trim(),note:$('lNote').value.trim()});
+  entries.push({id:Date.now(),date:$('lDate').value||today(),kind:kind,mode:$('lMode').value,amount:amt,who:$('lWho').value.trim(),note:$('lNote').value.trim(),cat:kind==='expense'?$('lCat').value:''});
   saveE(); renderLists();
   $('lAmt').value='';$('lWho').value='';$('lNote').value='';
   toast((kind==='income'?'Income':'Expense')+' saved ✓');
 };
 
-/* ---------- Setup / settings ---------- */
+/* ================= SETUP ================= */
 function openSetup(){
-  if(profile){$('sBiz').value=profile.biz;$('sUpi').value=profile.upi;$('sPayee').value=profile.payee||'';}
+  if(profile){$('sBiz').value=profile.biz;$('sUpi').value=profile.upi;$('sPayee').value=profile.payee||'';$('sTarget').value=profile.target||'';}
   $('setupModal').classList.add('show');
 }
 $('btnGear').onclick=openSetup;
 $('btnSave').onclick=function(){
-  var biz=$('sBiz').value.trim(), upi=$('sUpi').value.trim(), payee=$('sPayee').value.trim();
+  var biz=$('sBiz').value.trim(), upi=$('sUpi').value.trim(), payee=$('sPayee').value.trim(), tgt=parseFloat($('sTarget').value)||0;
   if(!biz){toast('Please enter your business name');return;}
   if(!upi||upi.indexOf('@')<1){toast('Please enter a valid UPI ID (has @)');return;}
-  profile={biz:biz,upi:upi,payee:payee};
-  saveP(); $('setupModal').classList.remove('show'); refreshQR(); toast('Saved — you are ready to collect ✨');
+  profile={biz:biz,upi:upi,payee:payee,target:tgt};
+  saveP(); $('setupModal').classList.remove('show'); refreshQR(); renderDash(); toast('Saved — you are ready to collect ✨');
 };
 
-/* ---------- Init ---------- */
+/* ================= INIT ================= */
 load();
 $('lDate').value=today();
+showPage('dash');
 if(profile){refreshQR();}else{openSetup();}
 renderLists();
 })();
